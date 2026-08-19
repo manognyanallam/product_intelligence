@@ -47,7 +47,7 @@ class Settings(BaseSettings):
         default_local = [
             "http://localhost:3000",
             "http://localhost:3001",
-            "https://onrender.com",
+            "https://product-intelligence-zpj7.onrender.com",
             "http://127.0.0.1:3000",
             "http://127.0.0.1:3001",
             "http://192.168.1.11:3000",
