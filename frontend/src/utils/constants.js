@@ -5,7 +5,7 @@
 
 /** API Configuration */
 export const API = {
-  BASE_URL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1',
+  BASE_URL: 'https://product-intelligence-zpj7.onrender.com',
   TIMEOUT: 30000,
   ENDPOINTS: {
     ANALYZE: '/analyze',
