@@ -1,0 +1,41 @@
+/* AI Product Intelligence Platform — Global Styles */
+/* Reference: architecture_final.md §9 (Frontend Design) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Agent Timeline Animation */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.agent-active {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Confidence Meter */
+.confidence-meter {
+  transition: all 0.5s ease;
+}
+
+/* Card Hover Effects */
+.MuiCard-root {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.MuiCard-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+

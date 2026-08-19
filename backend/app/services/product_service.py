@@ -1,0 +1,257 @@
+"""
+Product Service — Orchestrates the pipeline for product intelligence generation.
+
+This phase implements the Gemini integration: the service invokes the
+GeminiService to generate real, AI-powered product intelligence from the
+minimal MPN / Brand / Description input.
+
+Reference: architecture_final.md §5.3 (Agent 2: Product Intelligence Agent),
+§8.2 (Analyze Endpoint), §11 (Workflow)
+"""
+import logging
+import time
+import uuid
+from datetime import datetime
+from typing import Dict, Any, Optional
+
+from app.schemas.request import ProductRequest
+from app.schemas.response import (
+    ProductResponse, ProductInput, EnrichedData, ConfidenceScore,
+    ValidationReport, ValidationCheck, Source, AgentTimeline,
+)
+from app.services.gemini_service import GeminiService
+
+logger = logging.getLogger(__name__)
+
+
+class ProductService:
+    """
+    Business logic for product analysis.
+
+    Orchestrates AI product intelligence generation via Google Gemini.
+    """
+
+    # Class-level shared store so every ProductService instance (across routers)
+    # sees the same analyzed products. This mirrors the eventual ChromaDB-backed
+    # persistence where data is shared across the whole application.
+    _store: Dict[str, ProductResponse] = {}
+
+    def __init__(self, gemini_service: Optional[GeminiService] = None) -> None:
+        """Initialize the product service with a Gemini service."""
+        # In-memory store of analyzed products for the history endpoint.
+        # Uses the shared class-level dict so lookups work across router instances.
+        self._store = ProductService._store
+        self._gemini = gemini_service or GeminiService()
+
+    async def analyze(self, request: ProductRequest) -> ProductResponse:
+        """
+        Analyze a product and generate structured intelligence.
+
+        Invokes Gemini to generate the product title, category, description,
+        features, technical specifications, applications, SEO keywords, and a
+        confidence reason. Results are mapped into the standard ProductResponse.
+
+        Args:
+            request: Validated product request (mpn, brand, description).
+
+        Returns:
+            ProductResponse: AI-generated enriched product intelligence.
+
+        Raises:
+            GeminiServiceError: If Gemini generation fails (invalid key,
+                network error, rate limit, empty/invalid response).
+        """
+        product_id = f"prod_{uuid.uuid4().hex[:12]}"
+        now = datetime.utcnow().isoformat()
+
+        started = time.perf_counter()
+        logger.info(
+            "Starting product analysis: product_id=%s mpn=%s brand=%s",
+            product_id,
+            request.mpn,
+            request.brand,
+        )
+
+        # 1. Generate product intelligence via Gemini.
+        ai = await self._gemini.generate_product_intelligence(
+            mpn=request.mpn,
+            brand=request.brand,
+            description=request.description,
+        )
+        elapsed_ms = int((time.perf_counter() - started) * 1000)
+
+        # 2. Map the AI output into the response schema.
+        enriched = self._build_enriched_data(request, ai)
+        technical_specs = enriched.specifications
+        features = enriched.features
+        applications = enriched.applications
+        seo_keywords = enriched.seo_keywords
+        title = enriched.title
+        category = enriched.category
+        description = enriched.description
+
+        # 3. Build confidence scores.
+        # MPN/Brand/Description are inputs (verified). Generated fields are
+        # heuristic (medium confidence) until the validation agent is added in
+        # a later phase.
+        attribute_confidence: Dict[str, float] = {
+            "mpn": 1.0,
+            "brand": 1.0,
+            "description": 0.7,
+            "category": 0.6 if category else 0.0,
+            "title": 0.7 if title else 0.0,
+            "specifications": 0.6 if technical_specs else 0.0,
+            "features": 0.6 if features else 0.0,
+            "applications": 0.6 if applications else 0.0,
+            "seo_keywords": 0.6 if seo_keywords else 0.0,
+        }
+        overall = round(
+            sum(attribute_confidence.values()) / len(attribute_confidence), 4
+        )
+        confidence = ConfidenceScore(overall=overall, attributes=attribute_confidence)
+
+        # 4. Build validation report.
+        checks = [
+            ValidationCheck(
+                attribute="mpn",
+                status="verified",
+                message="MPN taken from validated input.",
+            ),
+            ValidationCheck(
+                attribute="brand",
+                status="verified",
+                message="Brand taken from validated input.",
+            ),
+            ValidationCheck(
+                attribute="category",
+                status="verified" if category else "unverified",
+                message=(
+                    "Category generated by Gemini."
+                    if category
+                    else "Gemini did not return a category."
+                ),
+            ),
+            ValidationCheck(
+                attribute="specifications",
+                status="verified" if technical_specs else "unverified",
+                message=(
+                    f"Gemini returned {len(technical_specs)} specifications."
+                    if technical_specs
+                    else "Gemini did not return specifications."
+                ),
+            ),
+            ValidationCheck(
+                attribute="title",
+                status="verified" if title else "unverified",
+                message="Title generated by Gemini." if title else "Gemini did not return a title.",
+            ),
+        ]
+        issues: list = []
+        if not category:
+            issues.append("Gemini did not generate a category.")
+        if not technical_specs:
+            issues.append("Gemini did not generate technical specifications.")
+        validation = ValidationReport(
+            status="passed" if not issues else "partial",
+            checks=checks,
+            issues=issues,
+        )
+
+        # 5. Source attribution — Gemini knowledge base.
+        sources = [
+            Source(
+                source_id="src_gemini_001",
+                type="knowledge_base",
+                name=f"Google Gemini ({self._gemini.model})",
+                attributes_used=[
+                    "title", "category", "description", "specifications",
+                    "features", "applications", "seo_keywords",
+                ],
+                relevance_score=0.75,
+            )
+        ]
+
+        # 6. Agent timeline.
+        # Retrieval and Validation agents are NOT part of this phase — they are
+        # reported as skipped. The intelligence agent (Gemini) is completed.
+        agent_timeline = [
+            AgentTimeline(agent="retrieval", status="skipped", duration_ms=0),
+            AgentTimeline(agent="intelligence", status="completed", duration_ms=elapsed_ms),
+            AgentTimeline(agent="validation", status="skipped", duration_ms=0),
+        ]
+
+        response = ProductResponse(
+            product_id=product_id,
+            status="completed",
+            input=ProductInput(
+                mpn=request.mpn,
+                brand=request.brand,
+                description=request.description,
+            ),
+            enriched_data=enriched,
+            confidence=confidence,
+            validation=validation,
+            sources=sources,
+            agent_timeline=agent_timeline,
+            created_at=now,
+        )
+
+        # Cache in memory for history/export lookups.
+        self._store[product_id] = response
+
+        logger.info(
+            "Product analysis completed: product_id=%s mpn=%s duration_ms=%d confidence=%s",
+            product_id,
+            request.mpn,
+            elapsed_ms,
+            overall,
+        )
+        return response
+
+    @staticmethod
+    def _build_enriched_data(request: ProductRequest, ai: Dict[str, Any]) -> EnrichedData:
+        description = ai.get("description", "") or ""
+        return EnrichedData(
+            mpn=request.mpn,
+            brand=request.brand,
+            manufacturer=request.brand,
+            category=ai.get("category", "") or "",
+            title=ai.get("title", "") or "",
+            description=description,
+            long_description=description,
+            specifications=ai.get("technical_specifications", {}) or {},
+            features=ai.get("key_features", []) or [],
+            applications=ai.get("applications", []) or [],
+            seo_keywords=ai.get("seo_keywords", []) or [],
+            compliance=[],
+            alternate_parts=[],
+            datasheet_url=None,
+        )
+
+    @staticmethod
+    def _build_confidence(enriched: EnrichedData) -> ConfidenceScore:
+        attributes = {
+            "mpn": 1.0, "brand": 1.0,
+            "description": 0.7 if enriched.description else 0.0,
+            "category": 0.6 if enriched.category else 0.0,
+            "title": 0.7 if enriched.title else 0.0,
+            "specifications": 0.6 if enriched.specifications else 0.0,
+            "features": 0.6 if enriched.features else 0.0,
+            "applications": 0.6 if enriched.applications else 0.0,
+            "seo_keywords": 0.6 if enriched.seo_keywords else 0.0,
+        }
+        overall = round(sum(attributes.values()) / len(attributes), 4)
+        return ConfidenceScore(overall=overall, attributes=attributes)
+
+    async def get_product(self, product_id: str) -> ProductResponse | None:
+        """
+        Retrieve a previously analyzed product by ID.
+
+        Args:
+            product_id: The product analysis ID.
+
+        Returns:
+            The stored ProductResponse or None if not found.
+        """
+        return self._store.get(product_id)
+

@@ -1,0 +1,77 @@
+{
+  "dataset": "Unihack- Sample Dataset.xlsx",
+  "source_path": "C:\\Users\\megha\\OneDrive\\Desktop\\Unihack- Sample Dataset.xlsx",
+  "total_rows": 1000,
+  "processed_rows": 1000,
+  "successfully_processed_rows": 1000,
+  "failed_rows": 0,
+  "success_percentage": 100.0,
+  "processing_time_seconds": 0.3986,
+  "average_processing_time_ms": 0.399,
+  "gemini_api_failures": 0,
+  "gemini_api_used": false,
+  "validation_failures": 0,
+  "missing_values": 0,
+  "placeholder_values_detected": 1000,
+  "invalid_manufacturer_brand_values": 0,
+  "invalid_uom_values": 0,
+  "products_enrichment_could_not_be_generated": 0,
+  "duplicate_mpns": {
+    "AVM6EV": [
+      784,
+      785
+    ]
+  },
+  "near_duplicate_mpns": {
+    "2563-20": [
+      "2563P-20"
+    ],
+    "27233.0": [
+      "2733.0"
+    ],
+    "3MABR-7100075690": [
+      "3MABR-7100075692"
+    ],
+    "ADCR5117512BS": [
+      "ADCR5117512SG"
+    ],
+    "DBDS12125A01F": [
+      "DBDS12125G01F",
+      "DBDS14125A01F"
+    ],
+    "DBDS12125G01F": [
+      "DBDS14125G01F"
+    ],
+    "DBDS14125A01F": [
+      "DBDS14125G01F"
+    ],
+    "DPH21B": [
+      "DPH2R1B"
+    ],
+    "M200B-21L": [
+      "M200B-21XL"
+    ],
+    "M200G-21L": [
+      "M200G-21XL"
+    ],
+    "M701B-21L": [
+      "M701B-21XL"
+    ]
+  },
+  "implemented_fields": [
+    "PART_NUMBER",
+    "Brand",
+    "Manufacturer",
+    "Part_Desc",
+    "Attributes",
+    "Category",
+    "Short_Description",
+    "Long_Description",
+    "Features",
+    "Specifications",
+    "UOM",
+    "validation",
+    "provenance"
+  ],
+  "unsupported_delivery_format_fields": "The 252-column Delivery Format is not available for this 1000-row input and is not claimed complete."
+}

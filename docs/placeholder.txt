@@ -1,0 +1,5 @@
+AI Product Intelligence Platform — Documentation
+
+This folder contains documentation files.
+Reference: architecture_final.md for the complete system architecture.
+

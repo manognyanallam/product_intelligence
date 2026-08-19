@@ -1,0 +1,1 @@
+gemini_event=retry mpn=1513717 attempt=1/3 failure_type=transient_network http_status=503 retry_delay_seconds=1.0

@@ -1,0 +1,1613 @@
+[
+  {
+    "test_index": 1,
+    "dataset_row": {
+      "Mfg_Part_Num": "DCB518ASTS06G",
+      "Part_Desc": "DCB518ASTS06G Diablo 1/2\"x18\" - Sanding Belt 6pc",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Freud Inc (2435)",
+      "": null
+    },
+    "request": {
+      "mpn": "DCB518ASTS06G",
+      "brand": "Unbranded product (Freud Inc (2435))",
+      "description": "DCB518ASTS06G Diablo 1/2\"x18\" - Sanding Belt 6pc",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 8949.54,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_d284170ee792",
+      "status": "completed",
+      "input": {
+        "mpn": "DCB518ASTS06G",
+        "brand": "Unbranded product (Freud Inc (2435))",
+        "description": "DCB518ASTS06G Diablo 1/2\"x18\" - Sanding Belt 6pc"
+      },
+      "enriched_data": {
+        "mpn": "DCB518ASTS06G",
+        "brand": "Unbranded product (Freud Inc (2435))",
+        "manufacturer": "Unbranded product (Freud Inc (2435))",
+        "category": "Tools & Home Improvement > Power Tool Parts & Accessories > Sanding Accessories > Sanding Belts",
+        "title": "Diablo DCB518ASTS06G 1/2-inch x 18-inch Sanding Belt, 6-Piece Assorted Pack",
+        "description": "The Diablo DCB518ASTS06G is a premium 1/2-inch by 18-inch sanding belt set designed for high-performance material removal and surface finishing. Engineered for use with portable belt sanders, these belts feature a superior grain blend that delivers exceptional sanding life and consistent finish quality across a variety of materials, including wood, metal, and plastics. The durable backing material ensures resistance to tearing and heat buildup during extended operation.\n\nThis 6-piece assorted pack offers versatility for professional contractors and DIY enthusiasts alike, providing a range of grits to handle tasks from aggressive stock removal to fine surface preparation. The optimized grain distribution minimizes clogging, ensuring maximum productivity and a cleaner workspace. Whether you are refinishing furniture, smoothing rough lumber, or deburring metal components, these Diablo sanding belts provide the reliability and precision required for professional-grade results.",
+        "long_description": "The Diablo DCB518ASTS06G is a premium 1/2-inch by 18-inch sanding belt set designed for high-performance material removal and surface finishing. Engineered for use with portable belt sanders, these belts feature a superior grain blend that delivers exceptional sanding life and consistent finish quality across a variety of materials, including wood, metal, and plastics. The durable backing material ensures resistance to tearing and heat buildup during extended operation.\n\nThis 6-piece assorted pack offers versatility for professional contractors and DIY enthusiasts alike, providing a range of grits to handle tasks from aggressive stock removal to fine surface preparation. The optimized grain distribution minimizes clogging, ensuring maximum productivity and a cleaner workspace. Whether you are refinishing furniture, smoothing rough lumber, or deburring metal components, these Diablo sanding belts provide the reliability and precision required for professional-grade results.",
+        "specifications": {
+          "MPN": "DCB518ASTS06G",
+          "Brand": "Diablo",
+          "Belt Width": "0.5 inches",
+          "Belt Length": "18 inches",
+          "Quantity": 6,
+          "Material Compatibility": "Wood, Metal, Plastic, Fiberglass",
+          "Accessory Type": "Sanding Belt"
+        },
+        "features": [
+          "Premium grain blend for superior material removal and extended belt life",
+          "Assorted grit pack provides versatility for various sanding applications",
+          "Durable backing material resists tearing and heat-induced degradation",
+          "Optimized grain distribution reduces loading and clogging",
+          "Designed for 1/2-inch x 18-inch portable belt sanders",
+          "Ideal for wood, metal, and composite material finishing"
+        ],
+        "applications": [
+          "Furniture refinishing and restoration",
+          "Smoothing rough-cut lumber and edges",
+          "Deburring and cleaning metal surfaces",
+          "Removing paint or varnish from intricate areas",
+          "Sanding tight corners and contoured surfaces"
+        ],
+        "seo_keywords": [
+          "DCB518ASTS06G",
+          "Diablo sanding belt",
+          "1/2 x 18 sanding belt",
+          "portable belt sander accessories",
+          "abrasive sanding belts",
+          "woodworking sanding supplies",
+          "power tool sanding belts",
+          "Diablo 6-piece sanding pack"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 7 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 8948
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:17:55.929538"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 8948
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 2,
+    "dataset_row": {
+      "Mfg_Part_Num": "3MABR-7100075678",
+      "Part_Desc": "3M 775L Stikit Film P150 - Cubitron II 50 Disc/Box",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Jam Industrial Supply LLC (JAMIN)",
+      "": null
+    },
+    "request": {
+      "mpn": "3MABR-7100075678",
+      "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+      "description": "3M 775L Stikit Film P150 - Cubitron II 50 Disc/Box",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 35909.37,
+    "retry_count": 1,
+    "failure_statuses": [
+      503
+    ],
+    "generated_output": {
+      "product_id": "prod_a23b49b4f6fa",
+      "status": "completed",
+      "input": {
+        "mpn": "3MABR-7100075678",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "description": "3M 775L Stikit Film P150 - Cubitron II 50 Disc/Box"
+      },
+      "enriched_data": {
+        "mpn": "3MABR-7100075678",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "manufacturer": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "category": "Industrial Supplies > Abrasives > Coated Abrasives > Abrasive Discs",
+        "title": "3M 3MABR-7100075678 Stikit Cubitron II Film Disc 775L, P150 Grit, 50 Discs/Box",
+        "description": "The 3M 775L Stikit Film Disc is a high-performance abrasive solution engineered for superior cutting speed and long-lasting durability. Featuring 3M's proprietary Cubitron II ceramic grain technology, these P150 grit discs provide a consistent, uniform finish while significantly reducing heat buildup during operation. The film backing offers exceptional tear resistance and flexibility, making it an ideal choice for demanding sanding applications on metal, wood, and composite surfaces.\n\nDesigned for efficiency and ease of use, the Stikit adhesive backing allows for quick and secure attachment to backup pads, minimizing downtime during disc changes. Whether you are performing heavy-duty material removal or fine surface preparation, the 775L series delivers professional-grade results. This box contains 50 high-quality discs, ensuring a reliable supply for industrial workshops, automotive body shops, and manufacturing facilities.",
+        "long_description": "The 3M 775L Stikit Film Disc is a high-performance abrasive solution engineered for superior cutting speed and long-lasting durability. Featuring 3M's proprietary Cubitron II ceramic grain technology, these P150 grit discs provide a consistent, uniform finish while significantly reducing heat buildup during operation. The film backing offers exceptional tear resistance and flexibility, making it an ideal choice for demanding sanding applications on metal, wood, and composite surfaces.\n\nDesigned for efficiency and ease of use, the Stikit adhesive backing allows for quick and secure attachment to backup pads, minimizing downtime during disc changes. Whether you are performing heavy-duty material removal or fine surface preparation, the 775L series delivers professional-grade results. This box contains 50 high-quality discs, ensuring a reliable supply for industrial workshops, automotive body shops, and manufacturing facilities.",
+        "specifications": {
+          "MPN": "3MABR-7100075678",
+          "Brand": "3M",
+          "Series": "775L",
+          "Grit": "P150",
+          "Abrasive Material": "Cubitron II Ceramic Grain",
+          "Backing Type": "Film",
+          "Attachment Type": "Stikit (Pressure Sensitive Adhesive)",
+          "Quantity per Box": 50
+        },
+        "features": [
+          "Cubitron II ceramic grain for faster cutting and longer disc life",
+          "P150 grit for versatile material removal and surface preparation",
+          "Durable film backing provides superior tear resistance and flexibility",
+          "Stikit adhesive backing for fast, secure attachment to backup pads",
+          "Reduces heat buildup to prevent surface discoloration and loading",
+          "Consistent finish quality across a wide range of industrial substrates"
+        ],
+        "applications": [
+          "Automotive body repair and paint preparation",
+          "Metal fabrication and deburring",
+          "Woodworking and furniture finishing",
+          "Composite material sanding and shaping",
+          "Industrial maintenance and surface restoration"
+        ],
+        "seo_keywords": [
+          "3MABR-7100075678",
+          "3M 775L Stikit",
+          "Cubitron II P150",
+          "3M film abrasive discs",
+          "industrial sanding discs",
+          "P150 abrasive film",
+          "Stikit sanding discs",
+          "metal finishing abrasives"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 8 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 35909
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:18:04.873976"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 35909
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 3,
+    "dataset_row": {
+      "Mfg_Part_Num": "3MABR-7100045865",
+      "Part_Desc": "3M 775L Stikit Film P120 - Cubitron II 50 Disc/Box",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Jam Industrial Supply LLC (JAMIN)",
+      "": null
+    },
+    "request": {
+      "mpn": "3MABR-7100045865",
+      "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+      "description": "3M 775L Stikit Film P120 - Cubitron II 50 Disc/Box",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 4956.69,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_d3eef4efb365",
+      "status": "completed",
+      "input": {
+        "mpn": "3MABR-7100045865",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "description": "3M 775L Stikit Film P120 - Cubitron II 50 Disc/Box"
+      },
+      "enriched_data": {
+        "mpn": "3MABR-7100045865",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "manufacturer": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "category": "Industrial Supplies > Abrasives > Sanding Discs",
+        "title": "3M 775L Stikit Film Disc P120, Cubitron II, 5-inch, 50 Discs/Box (3MABR-7100045865)",
+        "description": "The 3M 775L Stikit Film Disc features advanced Cubitron II technology, engineered to provide a faster cut rate and longer disc life compared to conventional abrasives. Designed for high-performance sanding and finishing, this P120 grit film disc utilizes a precision-shaped ceramic grain that cuts through metal, wood, and composite surfaces with minimal heat buildup, ensuring consistent results and reduced operator fatigue.\n\nEquipped with a pressure-sensitive adhesive (PSA) backing, these discs offer quick and secure attachment to backup pads, allowing for seamless transitions during multi-step finishing processes. The durable film backing provides superior tear resistance and flexibility, making it an ideal choice for both flat and contoured surfaces in demanding industrial environments.",
+        "long_description": "The 3M 775L Stikit Film Disc features advanced Cubitron II technology, engineered to provide a faster cut rate and longer disc life compared to conventional abrasives. Designed for high-performance sanding and finishing, this P120 grit film disc utilizes a precision-shaped ceramic grain that cuts through metal, wood, and composite surfaces with minimal heat buildup, ensuring consistent results and reduced operator fatigue.\n\nEquipped with a pressure-sensitive adhesive (PSA) backing, these discs offer quick and secure attachment to backup pads, allowing for seamless transitions during multi-step finishing processes. The durable film backing provides superior tear resistance and flexibility, making it an ideal choice for both flat and contoured surfaces in demanding industrial environments.",
+        "specifications": {
+          "MPN": "3MABR-7100045865",
+          "Brand": "3M",
+          "Grit": "P120",
+          "Abrasive Material": "Cubitron II Ceramic Grain",
+          "Backing Type": "Film",
+          "Attachment Type": "Stikit (PSA)",
+          "Quantity per Box": 50,
+          "Application Type": "Sanding and Finishing"
+        },
+        "features": [
+          "Cubitron II precision-shaped ceramic grain for rapid cut rates",
+          "Durable film backing provides excellent tear resistance and edge integrity",
+          "Stikit PSA backing for easy application and clean removal",
+          "P120 grit ideal for intermediate sanding and surface preparation",
+          "Long-lasting abrasive life reduces the frequency of disc changes",
+          "Cool-cutting action minimizes heat-related damage to workpieces"
+        ],
+        "applications": [
+          "Automotive body repair and paint preparation",
+          "Metal fabrication and deburring",
+          "Woodworking and furniture finishing",
+          "Composite material sanding",
+          "Marine maintenance and repair"
+        ],
+        "seo_keywords": [
+          "3MABR-7100045865",
+          "3M 775L Stikit",
+          "Cubitron II P120",
+          "3M film sanding disc",
+          "PSA abrasive disc",
+          "industrial sanding supplies",
+          "P120 grit disc",
+          "3M abrasive film"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 8 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 4956
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:18:40.788862"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 4956
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 4,
+    "dataset_row": {
+      "Mfg_Part_Num": "3MABR-7100048736",
+      "Part_Desc": "3M 775L Stikit Film P80 - Cubitron II 50 Disc/Box",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Jam Industrial Supply LLC (JAMIN)",
+      "": null
+    },
+    "request": {
+      "mpn": "3MABR-7100048736",
+      "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+      "description": "3M 775L Stikit Film P80 - Cubitron II 50 Disc/Box",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 6148.61,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_55ce7f0a674f",
+      "status": "completed",
+      "input": {
+        "mpn": "3MABR-7100048736",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "description": "3M 775L Stikit Film P80 - Cubitron II 50 Disc/Box"
+      },
+      "enriched_data": {
+        "mpn": "3MABR-7100048736",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "manufacturer": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "category": "Industrial & Scientific > Abrasives > Sanding Discs",
+        "title": "3M 3MABR-7100048736 775L Stikit Film Disc, Cubitron II, P80 Grit, 50/Box",
+        "description": "The 3M 775L Stikit Film Disc features advanced Cubitron II abrasive technology, engineered for superior cutting performance and extended product life. Designed for high-speed sanding and finishing, these P80 grit discs utilize a precision-shaped ceramic grain that cuts faster and lasts longer than traditional abrasive discs. The film backing provides increased tear resistance and a consistent finish, making it an ideal choice for demanding metalworking and automotive repair applications.\n\nEquipped with a pressure-sensitive adhesive (PSA) backing, these discs offer quick and easy attachment to backup pads, ensuring minimal downtime during abrasive changes. The 775L series is optimized for heat reduction, preventing loading and surface discoloration, which helps maintain high-quality results across various substrates. Each box contains 50 discs, providing a reliable and efficient solution for professional industrial sanding tasks.",
+        "long_description": "The 3M 775L Stikit Film Disc features advanced Cubitron II abrasive technology, engineered for superior cutting performance and extended product life. Designed for high-speed sanding and finishing, these P80 grit discs utilize a precision-shaped ceramic grain that cuts faster and lasts longer than traditional abrasive discs. The film backing provides increased tear resistance and a consistent finish, making it an ideal choice for demanding metalworking and automotive repair applications.\n\nEquipped with a pressure-sensitive adhesive (PSA) backing, these discs offer quick and easy attachment to backup pads, ensuring minimal downtime during abrasive changes. The 775L series is optimized for heat reduction, preventing loading and surface discoloration, which helps maintain high-quality results across various substrates. Each box contains 50 discs, providing a reliable and efficient solution for professional industrial sanding tasks.",
+        "specifications": {
+          "MPN": "3MABR-7100048736",
+          "Brand": "3M",
+          "Abrasive Material": "Cubitron II Ceramic Grain",
+          "Grit": "P80",
+          "Backing Type": "Film",
+          "Attachment Type": "Stikit (PSA)",
+          "Quantity per Box": 50,
+          "Series": "775L"
+        },
+        "features": [
+          "Cubitron II precision-shaped ceramic grain for rapid cutting action",
+          "Durable film backing offers superior tear resistance compared to paper",
+          "Stikit PSA backing allows for quick, secure attachment to backup pads",
+          "P80 grit ideal for heavy-duty material removal and surface leveling",
+          "Resists loading and heat buildup for consistent performance",
+          "Professional-grade abrasive suitable for metal, wood, and composite surfaces"
+        ],
+        "applications": [
+          "Automotive body repair and paint preparation",
+          "Metal fabrication and weld grinding",
+          "Woodworking and furniture manufacturing",
+          "Composite material finishing",
+          "General industrial maintenance and repair"
+        ],
+        "seo_keywords": [
+          "3MABR-7100048736",
+          "3M 775L Stikit",
+          "Cubitron II P80",
+          "3M film sanding discs",
+          "PSA abrasive discs",
+          "industrial sanding discs",
+          "metal grinding discs",
+          "3M abrasive film"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 8 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 6148
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:18:45.739068"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 6148
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 5,
+    "dataset_row": {
+      "Mfg_Part_Num": "T27417",
+      "Part_Desc": "T27417 Grizzly OscillatingEdge - Belt and Spindle Sander",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Woodstock Intl (3658)"
+    },
+    "request": {
+      "mpn": "T27417",
+      "brand": "Unbranded product (Woodstock Intl (3658))",
+      "description": "T27417 Grizzly OscillatingEdge - Belt and Spindle Sander",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 5379.99,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_ad32c6880bdb",
+      "status": "completed",
+      "input": {
+        "mpn": "T27417",
+        "brand": "Unbranded product (Woodstock Intl (3658))",
+        "description": "T27417 Grizzly OscillatingEdge - Belt and Spindle Sander"
+      },
+      "enriched_data": {
+        "mpn": "T27417",
+        "brand": "Unbranded product (Woodstock Intl (3658))",
+        "manufacturer": "Unbranded product (Woodstock Intl (3658))",
+        "category": "Tools & Equipment > Power Tools > Sanders > Oscillating Sanders",
+        "title": "Grizzly T27417 Oscillating Edge Belt and Spindle Sander",
+        "description": "The Grizzly T27417 Oscillating Edge Belt and Spindle Sander is a versatile, dual-function sanding solution designed for professional woodworkers and serious hobbyists. This robust machine combines the efficiency of an edge belt sander with the precision of an oscillating spindle sander, allowing for seamless transitions between flat edge sanding and intricate contour work. Its heavy-duty construction ensures stability during operation, while the oscillating action prevents heat buildup and loading, significantly extending the life of your sanding belts and sleeves.\n\nEngineered for performance and convenience, the T27417 features a tilting table that provides flexibility for bevel sanding and complex joinery tasks. The integrated dust collection port helps maintain a cleaner workspace by efficiently capturing debris at the source. Whether you are smoothing rough-cut lumber, refining curves, or finishing delicate edges, this Grizzly sander provides the power and reliability needed to achieve professional-grade results in any workshop environment.",
+        "long_description": "The Grizzly T27417 Oscillating Edge Belt and Spindle Sander is a versatile, dual-function sanding solution designed for professional woodworkers and serious hobbyists. This robust machine combines the efficiency of an edge belt sander with the precision of an oscillating spindle sander, allowing for seamless transitions between flat edge sanding and intricate contour work. Its heavy-duty construction ensures stability during operation, while the oscillating action prevents heat buildup and loading, significantly extending the life of your sanding belts and sleeves.\n\nEngineered for performance and convenience, the T27417 features a tilting table that provides flexibility for bevel sanding and complex joinery tasks. The integrated dust collection port helps maintain a cleaner workspace by efficiently capturing debris at the source. Whether you are smoothing rough-cut lumber, refining curves, or finishing delicate edges, this Grizzly sander provides the power and reliability needed to achieve professional-grade results in any workshop environment.",
+        "specifications": {
+          "Model": "T27417",
+          "Brand": "Grizzly Industrial",
+          "Sander Type": "Oscillating Edge Belt and Spindle",
+          "Oscillation Stroke": "0.75 inch",
+          "Table Tilt": "0 to 45 degrees",
+          "Dust Port Size": "2.5 inches",
+          "Construction": "Cast iron and steel"
+        },
+        "features": [
+          "Dual-function design for both edge belt and oscillating spindle sanding",
+          "Oscillating action reduces heat and prevents belt loading for longer abrasive life",
+          "Tilting work table allows for precise bevel sanding and angled edge work",
+          "Integrated dust collection port for a cleaner, safer workshop environment",
+          "Heavy-duty base construction for minimal vibration during operation",
+          "Quick-change spindle system for fast and efficient abrasive transitions"
+        ],
+        "applications": [
+          "Smoothing and squaring rough-cut furniture components",
+          "Refining intricate curves and internal cutouts on woodworking projects",
+          "Beveling edges for complex joinery and miters",
+          "Removing tool marks and preparing surfaces for finishing",
+          "Contouring custom guitar bodies and musical instrument parts"
+        ],
+        "seo_keywords": [
+          "T27417",
+          "Grizzly T27417",
+          "oscillating edge sander",
+          "spindle sander",
+          "belt and spindle sander",
+          "woodworking sander",
+          "Grizzly industrial tools",
+          "edge sanding machine"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 7 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 5379
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:18:51.888894"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 5379
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 6,
+    "dataset_row": {
+      "Mfg_Part_Num": "VN56920",
+      "Part_Desc": "VN56920 10 1/2\" Saw Blade",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Marshalltown Trowel (5155)"
+    },
+    "request": {
+      "mpn": "VN56920",
+      "brand": "Unbranded product (Marshalltown Trowel (5155))",
+      "description": "VN56920 10 1/2\" Saw Blade",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 19903.2,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_aafaa0c5ab39",
+      "status": "completed",
+      "input": {
+        "mpn": "VN56920",
+        "brand": "Unbranded product (Marshalltown Trowel (5155))",
+        "description": "VN56920 10 1/2\" Saw Blade"
+      },
+      "enriched_data": {
+        "mpn": "VN56920",
+        "brand": "Unbranded product (Marshalltown Trowel (5155))",
+        "manufacturer": "Unbranded product (Marshalltown Trowel (5155))",
+        "category": "Tools & Home Improvement > Power Tool Accessories > Saw Blades",
+        "title": "Marshalltown 5155 (VN56920) 10-1/2 inch Saw Blade",
+        "description": "The Marshalltown 5155 (VN56920) is a professional-grade 10-1/2 inch saw blade designed for precision cutting and durability in demanding job site environments. Engineered to meet the rigorous standards of construction professionals, this blade provides clean, efficient cuts across a variety of materials, ensuring optimal performance for your power tools.\n\nBuilt with high-quality materials, the VN56920 offers excellent wear resistance and longevity, reducing the frequency of blade changes and maximizing productivity. Whether you are working on framing, carpentry, or specialized masonry-related cutting tasks, this Marshalltown blade delivers the reliability and consistency required for high-quality craftsmanship.",
+        "long_description": "The Marshalltown 5155 (VN56920) is a professional-grade 10-1/2 inch saw blade designed for precision cutting and durability in demanding job site environments. Engineered to meet the rigorous standards of construction professionals, this blade provides clean, efficient cuts across a variety of materials, ensuring optimal performance for your power tools.\n\nBuilt with high-quality materials, the VN56920 offers excellent wear resistance and longevity, reducing the frequency of blade changes and maximizing productivity. Whether you are working on framing, carpentry, or specialized masonry-related cutting tasks, this Marshalltown blade delivers the reliability and consistency required for high-quality craftsmanship.",
+        "specifications": {
+          "MPN": "VN56920",
+          "Brand": "Marshalltown",
+          "Model": "5155",
+          "Blade Diameter": "10-1/2 inches",
+          "Product Type": "Saw Blade"
+        },
+        "features": [
+          "10-1/2 inch diameter for versatile cutting applications",
+          "High-durability construction for extended service life",
+          "Precision-engineered teeth for clean and accurate cuts",
+          "Compatible with standard power saws requiring 10-1/2 inch blades",
+          "Professional-grade material composition for wear resistance",
+          "Designed for consistent performance in heavy-duty environments"
+        ],
+        "applications": [
+          "General construction and framing",
+          "Carpentry and woodworking projects",
+          "Renovation and remodeling tasks",
+          "Professional job site material cutting"
+        ],
+        "seo_keywords": [
+          "VN56920",
+          "Marshalltown 5155",
+          "10-1/2 inch saw blade",
+          "Marshalltown saw blade",
+          "construction power tool accessory",
+          "replacement saw blade",
+          "professional cutting tool"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 5 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 19903
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:18:57.269830"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 19903
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 7,
+    "dataset_row": {
+      "Mfg_Part_Num": "S03-05226-IS",
+      "Part_Desc": "S0305226IS IV Switch / Pilot",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "Leviton",
+      "Part_Manuf": "Leviton Mfg Co (4927)"
+    },
+    "request": {
+      "mpn": "S03-05226-IS",
+      "brand": "Leviton",
+      "description": "S0305226IS IV Switch / Pilot",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 4630.49,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_ba120c69219d",
+      "status": "completed",
+      "input": {
+        "mpn": "S03-05226-IS",
+        "brand": "Leviton",
+        "description": "S0305226IS IV Switch / Pilot"
+      },
+      "enriched_data": {
+        "mpn": "S03-05226-IS",
+        "brand": "Leviton",
+        "manufacturer": "Leviton",
+        "category": "Electrical > Wiring Devices > Switches > Toggle Switches",
+        "title": "Leviton S03-05226-IS Ivory Pilot Light Switch",
+        "description": "The Leviton S03-05226-IS is a high-quality pilot light switch designed to provide clear visual status indication for lighting and equipment circuits. Finished in a classic ivory color, this switch is engineered for durability and reliable performance in both residential and light commercial environments. Its pilot light feature ensures users can easily identify whether a circuit is energized, enhancing safety and operational efficiency.\n\nBuilt to meet rigorous industry standards, this Leviton switch offers seamless installation and long-term functionality. The robust construction ensures it can withstand frequent use while maintaining its aesthetic appeal. Whether you are upgrading a home workshop or managing lighting controls in a small office, this pilot light switch provides the professional-grade reliability expected from the Leviton brand.",
+        "long_description": "The Leviton S03-05226-IS is a high-quality pilot light switch designed to provide clear visual status indication for lighting and equipment circuits. Finished in a classic ivory color, this switch is engineered for durability and reliable performance in both residential and light commercial environments. Its pilot light feature ensures users can easily identify whether a circuit is energized, enhancing safety and operational efficiency.\n\nBuilt to meet rigorous industry standards, this Leviton switch offers seamless installation and long-term functionality. The robust construction ensures it can withstand frequent use while maintaining its aesthetic appeal. Whether you are upgrading a home workshop or managing lighting controls in a small office, this pilot light switch provides the professional-grade reliability expected from the Leviton brand.",
+        "specifications": {
+          "MPN": "S03-05226-IS",
+          "Brand": "Leviton",
+          "Color": "Ivory",
+          "Device Type": "Pilot Light Switch",
+          "Mounting Type": "Wall Mount"
+        },
+        "features": [
+          "Integrated pilot light for clear circuit status indication",
+          "Durable ivory finish matches standard decor",
+          "Designed for easy installation in standard wall boxes",
+          "High-quality construction for long-lasting performance",
+          "Reliable switching mechanism for consistent operation"
+        ],
+        "applications": [
+          "Residential lighting control",
+          "Garage and workshop equipment status monitoring",
+          "Basement and attic lighting indicators",
+          "Commercial office lighting systems",
+          "Utility room circuit identification"
+        ],
+        "seo_keywords": [
+          "S03-05226-IS",
+          "Leviton pilot light switch",
+          "ivory toggle switch",
+          "lighted wall switch",
+          "electrical switch with pilot light",
+          "Leviton wiring devices",
+          "status indicator switch"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 5 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 4630
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:19:17.171231"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 4630
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  },
+  {
+    "test_index": 8,
+    "dataset_row": {
+      "Mfg_Part_Num": "3MABR-7100075690",
+      "Part_Desc": "3M 775L Stikit Film P180 - Cubitron II 50 Disc/Box",
+      "E1_Brand": "-- Unbranded --",
+      "Unilog_Brand": "-- No Unilog Brand --",
+      "DIB_Brand": "-- No DIB Brand --",
+      "Part_Manuf": "Jam Industrial Supply LLC (JAMIN)",
+      "": null
+    },
+    "request": {
+      "mpn": "3MABR-7100075690",
+      "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+      "description": "3M 775L Stikit Film P180 - Cubitron II 50 Disc/Box",
+      "options": null
+    },
+    "status": "success",
+    "latency_ms": 3701.23,
+    "retry_count": 0,
+    "failure_statuses": [],
+    "generated_output": {
+      "product_id": "prod_2607052edeb0",
+      "status": "completed",
+      "input": {
+        "mpn": "3MABR-7100075690",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "description": "3M 775L Stikit Film P180 - Cubitron II 50 Disc/Box"
+      },
+      "enriched_data": {
+        "mpn": "3MABR-7100075690",
+        "brand": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "manufacturer": "Unbranded product (Jam Industrial Supply LLC (JAMIN))",
+        "category": "Industrial & Scientific > Abrasives > Sanding Discs",
+        "title": "3M 775L Stikit Film Disc P180, Cubitron II, 5-Inch, 50/Box (3MABR-7100075690)",
+        "description": "The 3M 775L Stikit Film Disc features advanced Cubitron II abrasive technology, engineered for high-performance sanding and finishing applications. These P180 grit discs utilize precision-shaped ceramic grain that cuts exceptionally fast while maintaining a consistent finish, significantly increasing productivity and reducing operator fatigue compared to conventional abrasives. The film backing provides superior tear resistance and flexibility, making it ideal for contour sanding and demanding industrial surfaces.\n\nDesigned for convenience and efficiency, the Stikit adhesive backing allows for quick, secure attachment to backup pads, ensuring the disc remains firmly in place during heavy-duty operations. With a 50-disc per box configuration, this product is an essential choice for professional workshops and manufacturing environments requiring reliable, long-lasting abrasive performance on metal, wood, and composite materials.",
+        "long_description": "The 3M 775L Stikit Film Disc features advanced Cubitron II abrasive technology, engineered for high-performance sanding and finishing applications. These P180 grit discs utilize precision-shaped ceramic grain that cuts exceptionally fast while maintaining a consistent finish, significantly increasing productivity and reducing operator fatigue compared to conventional abrasives. The film backing provides superior tear resistance and flexibility, making it ideal for contour sanding and demanding industrial surfaces.\n\nDesigned for convenience and efficiency, the Stikit adhesive backing allows for quick, secure attachment to backup pads, ensuring the disc remains firmly in place during heavy-duty operations. With a 50-disc per box configuration, this product is an essential choice for professional workshops and manufacturing environments requiring reliable, long-lasting abrasive performance on metal, wood, and composite materials.",
+        "specifications": {
+          "MPN": "3MABR-7100075690",
+          "Brand": "3M",
+          "Grit": "P180",
+          "Abrasive Material": "Ceramic",
+          "Backing Type": "Film",
+          "Attachment Type": "Stikit",
+          "Quantity per Box": 50,
+          "Series": "775L"
+        },
+        "features": [
+          "Features 3M Cubitron II precision-shaped ceramic grain for rapid cutting",
+          "P180 grit provides an ideal balance between material removal and surface refinement",
+          "Durable film backing offers enhanced tear resistance and edge durability",
+          "Stikit pressure-sensitive adhesive backing for easy application and removal",
+          "Designed for long disc life and consistent finish quality",
+          "Suitable for use on a wide variety of substrates including metal and composites"
+        ],
+        "applications": [
+          "Automotive body repair and paint preparation",
+          "Metal fabrication and finishing",
+          "Woodworking and furniture manufacturing",
+          "Composite material sanding and shaping",
+          "General industrial maintenance and repair"
+        ],
+        "seo_keywords": [
+          "3MABR-7100075690",
+          "3M 775L Stikit",
+          "Cubitron II P180",
+          "3M sanding discs",
+          "film abrasive discs",
+          "industrial sanding supplies",
+          "P180 grit film disc",
+          "3M abrasive film"
+        ],
+        "compliance": [],
+        "alternate_parts": [],
+        "datasheet_url": null
+      },
+      "confidence": {
+        "overall": 0.7111,
+        "attributes": {
+          "mpn": 1.0,
+          "brand": 1.0,
+          "description": 0.7,
+          "category": 0.6,
+          "title": 0.7,
+          "specifications": 0.6,
+          "features": 0.6,
+          "applications": 0.6,
+          "seo_keywords": 0.6
+        }
+      },
+      "validation": {
+        "status": "passed",
+        "checks": [
+          {
+            "attribute": "mpn",
+            "status": "verified",
+            "message": "MPN taken from validated input."
+          },
+          {
+            "attribute": "brand",
+            "status": "verified",
+            "message": "Brand taken from validated input."
+          },
+          {
+            "attribute": "category",
+            "status": "verified",
+            "message": "Category generated by Gemini."
+          },
+          {
+            "attribute": "specifications",
+            "status": "verified",
+            "message": "Gemini returned 8 specifications."
+          },
+          {
+            "attribute": "title",
+            "status": "verified",
+            "message": "Title generated by Gemini."
+          }
+        ],
+        "issues": []
+      },
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 3701
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ],
+      "created_at": "2026-08-19T09:19:21.804727"
+    },
+    "provenance": {
+      "sources": [
+        {
+          "source_id": "src_gemini_001",
+          "type": "knowledge_base",
+          "name": "Google Gemini (gemini-3.1-flash-lite)",
+          "url": null,
+          "attributes_used": [
+            "title",
+            "category",
+            "description",
+            "specifications",
+            "features",
+            "applications",
+            "seo_keywords"
+          ],
+          "relevance_score": 0.75
+        }
+      ],
+      "agent_timeline": [
+        {
+          "agent": "retrieval",
+          "status": "skipped",
+          "duration_ms": 0
+        },
+        {
+          "agent": "intelligence",
+          "status": "completed",
+          "duration_ms": 3701
+        },
+        {
+          "agent": "validation",
+          "status": "skipped",
+          "duration_ms": 0
+        }
+      ]
+    },
+    "validation": {
+      "missing_fields": [],
+      "invalid_fields": [],
+      "valid": true
+    },
+    "rate_limit": false,
+    "api_error": false
+  }
+]

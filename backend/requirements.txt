@@ -1,0 +1,36 @@
+# ============================================
+# AI Product Intelligence Platform — Backend Dependencies
+# Only the API-layer dependencies are required to boot.
+# AI/ML packages (Gemini, LangChain, ChromaDB) are listed
+# as optional — install them when implementing the pipeline.
+# Reference: architecture_final.md §4 (Technology Stack)
+# ============================================
+
+# === Web Framework ===
+fastapi==0.110.0
+uvicorn[standard]==0.27.0
+pydantic>=2.11.7
+pydantic-settings>=2.10.1
+
+# === Document Processing ===
+python-multipart==0.0.6
+
+# === PDF Report Generation ===
+reportlab==4.1.0
+
+# === Security & Middleware ===
+slowapi==0.1.9
+python-dotenv==1.0.0
+
+# === AI & LLM ===
+# Official Google Generative AI SDK (latest) — Gemini integration (Phase 2).
+# Docs: https://ai.google.dev/gemini-api/docs/google-genai-sdk
+google-genai>=1.0.0
+
+# === AI & LLM (later phases — RAG/ChromaDB/LangChain) ===
+# langchain==0.3.0
+# langchain-google-genai==1.0.0
+# langchain-chroma==0.1.0
+# chromadb==0.5.0
+# pypdf2==3.0.0
+openpyxl>=3.1.2

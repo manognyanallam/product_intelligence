@@ -1,0 +1,28 @@
+=== APP BOOT VERIFICATION ===
+App title: AI Product Intelligence Platform API
+App version: 2.0.0
+
+=== REGISTERED ROUTES ===
+GET    /openapi.json
+GET    /docs
+GET    /docs/oauth2-redirect
+GET    /redoc
+GET    /api/v1/health
+POST   /api/v1/analyze
+POST   /api/v1/upload-document
+GET    /api/v1/history
+GET    /api/v1/download-json/{product_id}
+GET    /api/v1/download-pdf/{product_id}
+GET    /
+
+Health _START_TIME set: True
+Valid ProductRequest OK: mpn=SN74LS00N
+PASS: Missing mpn raises 422 -> ('mpn',)
+PASS: Long description raises 422 -> string_too_long
+PASS: Missing brand raises 422 -> ('brand',)
+ProductService.analyze OK: product_id=prod_f30f855baefb
+  Enriched MPN: SN74LS00N
+  Overall confidence: 0.7111
+  Intelligence agent status: completed
+PDF generation OK: 4991 bytes, starts with %PDF: True
+HistoryService OK: 3 entries

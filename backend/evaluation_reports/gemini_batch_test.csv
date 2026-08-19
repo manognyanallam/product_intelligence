@@ -1,0 +1,9 @@
+test_index,status,mpn,latency_ms,retry_count,error_code,error_status,rate_limit,validation_valid,missing_fields,invalid_fields
+1,success,DCB518ASTS06G,8949.54,0,,,False,True,,
+2,success,3MABR-7100075678,35909.37,1,,,False,True,,
+3,success,3MABR-7100045865,4956.69,0,,,False,True,,
+4,success,3MABR-7100048736,6148.61,0,,,False,True,,
+5,success,T27417,5379.99,0,,,False,True,,
+6,success,VN56920,19903.2,0,,,False,True,,
+7,success,S03-05226-IS,4630.49,0,,,False,True,,
+8,success,3MABR-7100075690,3701.23,0,,,False,True,,

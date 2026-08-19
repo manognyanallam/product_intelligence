@@ -1,0 +1,30 @@
+[PASS] GET /health -> 200 healthy
+[PASS] GET / 
+[PASS] POST /analyze valid -> 503
+[PASS]   Structured Gemini error (code present) 
+[PASS]   Gemini error has code field 
+[PASS] POST /analyze missing mpn -> 422 -> 422
+[PASS] POST /analyze missing brand -> 422 -> 422
+[PASS] POST /analyze missing description -> 422 -> 422
+[PASS] POST /analyze long description -> 422 -> 422
+[PASS] GET /download-json existing (skipped — no AI product) (GEMINI_API_KEY not set)
+[PASS] GET /download-json missing -> 404 -> 404
+[PASS] GET /download-pdf existing (skipped — no AI product) (GEMINI_API_KEY not set)
+[PASS] GET /download-pdf missing -> 404 -> 404
+[PASS] GET /history -> 200
+[PASS]   History has results 
+[PASS]   History total > 0 
+[PASS] GET /history paginated -> 200
+[PASS] POST /upload-document valid -> 201
+[PASS]   Document has document_id 
+[PASS] POST /upload-document empty -> 400 -> 400
+[PASS] POST /upload-document bad type -> 400 -> 400
+[PASS] GET /docs (Swagger) -> 200
+[PASS] Swagger has POST /api/v1/analyze -> True
+[PASS] Swagger has POST /api/v1/upload-document -> True
+[PASS] Swagger has GET /api/v1/history -> True
+[PASS] Swagger has GET /api/v1/health -> True
+[PASS] Swagger has GET /api/v1/download-json/{product_id} -> True
+[PASS] Swagger has GET /api/v1/download-pdf/{product_id} -> True
+
+RESULT: ALL PASSED

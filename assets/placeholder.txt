@@ -1,0 +1,7 @@
+AI Product Intelligence Platform — Assets
+
+This folder contains images, diagrams, and design assets.
+- architecture_diagram.png (export of ASCII diagram from architecture_final.md)
+- logo.svg
+- wireframes/
+

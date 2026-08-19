@@ -1,0 +1,21 @@
+{
+  "products_tested": 8,
+  "successful_requests": 8,
+  "failed_requests": 0,
+  "average_latency_ms": 11197.39,
+  "minimum_latency_ms": 3701.23,
+  "maximum_latency_ms": 35909.37,
+  "retry_count": 1,
+  "503_occurrences": 1,
+  "transient_status_counts": {
+    "503": 1
+  },
+  "rate_limit_count": 0,
+  "api_error_count": 0,
+  "validation_failures": 0,
+  "missing_fields": 0,
+  "generated_field_completeness": 100.0,
+  "ground_truth_available": false,
+  "accuracy_claimed": false,
+  "demo_readiness": true
+}
