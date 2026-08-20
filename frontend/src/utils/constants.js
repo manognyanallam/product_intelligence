@@ -5,7 +5,7 @@
 
 /** API Configuration */
 export const API = {
-  BASE_URL: 'https://product-intelligence-zpj7.onrender.com',
+  BASE_URL:  'https://product-intelligence-zpj7.onrender.com',
   TIMEOUT: 30000,
   ENDPOINTS: {
     ANALYZE: '/analyze',
