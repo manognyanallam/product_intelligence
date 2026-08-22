@@ -330,7 +330,7 @@ class GeminiService:
         client = self._get_client()
         started = time.perf_counter()
 
-            try:
+         try:
                 response = self._generate_content(client, prompt)
             except Exception as exc:
                 raise self._normalize_provider_error(exc) from exc
