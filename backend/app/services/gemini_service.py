@@ -245,38 +245,23 @@ class GeminiService:
     # -- Internal helpers ---------------------------------------------------
 
     def _get_client(self):
-        """
-        Lazily build the Google GenAI client.
-
-        Returns:
-            The `google.genai.Client` instance.
-
-        Raises:
-            GeminiConfigurationError: If the SDK is unavailable or API key is invalid.
-        """
+        "Lazily build and cache the Google GenAI client."
         if self._client is not None:
             return self._client
-
-    def _get_client(self):
-
         try:
-            # The modern Google GenAI library import
             from google import genai
         except ImportError as exc:
             raise GeminiConfigurationError(
                 "The google-genai SDK package is not installed.",
                 detail=str(exc),
             ) from exc
-
         try:
-            # The new SDK creates a single Client object using your exact API key
             self._client = genai.Client(api_key=self.api_key)
         except Exception as exc:
             raise GeminiConfigurationError(
                 "Failed to initialize the modern Gemini client.",
                 detail=str(exc),
             ) from exc
-
         return self._client
 
     async def _invoke_gemini(self, prompt: str) -> str:
@@ -334,56 +319,55 @@ class GeminiService:
         started = time.perf_counter()
 
         try:
-                response = self._generate_content(client, prompt)
+            response = self._generate_content(client, prompt)
         except Exception as exc:
-                raise self._normalize_provider_error(exc) from exc
+            raise self._normalize_provider_error(exc) from exc
         finally:
-                elapsed_ms = int((time.perf_counter() - started) * 1000)
-                logger.debug("Gemini call completed in %dms", elapsed_ms)
+            elapsed_ms = int((time.perf_counter() - started) * 1000)
+            logger.debug("Gemini call completed in %dms", elapsed_ms)
 
         return self._extract_response_text(response)
 
-        def _generate_content(self, client, prompt: str):
-            from google import genai
+    def _generate_content(self, client, prompt: str):
+        from google import genai
+        return client.models.generate_content(
+            model=self.model,
+            contents=prompt,
+            config=genai.types.GenerateContentConfig(
+                response_mime_type="application/json",
+                temperature=0.4,
+            ),
+        )
 
-            return client.models.generate_content(
-                model='gemini-1.5-flash',
-                contents=prompt,
-                config=genai.types.GenerateContentConfig(
-                    response_mime_type="application/json", 
-                    temperature=0.4,
-                ),
-            )
+    @staticmethod
+    def _normalize_provider_error(exc: Exception) -> GeminiServiceError:
+        status = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+        message = str(exc).lower()
+        if status == 429 or "429" in message or "quota" in message or "resource exhausted" in message:
+            return GeminiRateLimitError("Gemini API rate limit exceeded. Please try again later.", detail=str(exc))
+        if status in (401, 403) or "api key" in message or "apikey" in message or "permission" in message:
+            return GeminiConfigurationError("Invalid or unauthorized Gemini API key.", detail=str(exc))
+        if isinstance(status, int) and status in (500, 502, 503, 504):
+            error = GeminiNetworkError("Gemini API is temporarily unavailable. Please retry shortly.", detail="Transient provider failure.")
+            error.status_code = status
+            return error
+        if isinstance(status, int) and 400 <= status < 500:
+            error = GeminiRequestError("Gemini rejected the request.", detail="Non-transient provider request error.")
+            error.status_code = status
+            return error
+        return GeminiNetworkError("Failed to reach the Gemini API.", detail="Transient network failure.")
 
-        @staticmethod
-        def _normalize_provider_error(exc: Exception) -> GeminiServiceError:
-            status = getattr(exc, "status_code", None) or getattr(exc, "code", None)
-            message = str(exc).lower()
-            if status == 429 or "429" in message or "quota" in message or "resource exhausted" in message:
-                return GeminiRateLimitError("Gemini API rate limit exceeded. Please try again later.", detail=str(exc))
-            if status in (401, 403) or "api key" in message or "apikey" in message or "permission" in message:
-                return GeminiConfigurationError("Invalid or unauthorized Gemini API key.", detail=str(exc))
-            if isinstance(status, int) and status in (500, 502, 503, 504):
-                error = GeminiNetworkError("Gemini API is temporarily unavailable. Please retry shortly.", detail="Transient provider failure.")
-                error.status_code = status
-                return error
-            if isinstance(status, int) and 400 <= status < 500:
-                error = GeminiRequestError("Gemini rejected the request.", detail="Non-transient provider request error.")
-                error.status_code = status
-                return error
-            return GeminiNetworkError("Failed to reach the Gemini API.", detail="Transient network failure.")
-
-        @staticmethod
-        def _extract_response_text(response) -> str:
-            text = getattr(response, "text", None)
-            if text:
-                return text
-            try:
-                candidates = getattr(response, "candidates", None) or []
-                parts = getattr(getattr(candidates[0], "content", None), "parts", None) or []
-                return getattr(parts[0], "text", None) or "" if parts and candidates else ""
-            except (IndexError, AttributeError, TypeError):
-                return ""
+    @staticmethod
+    def _extract_response_text(response) -> str:
+        text = getattr(response, "text", None)
+        if text:
+            return text
+        try:
+            candidates = getattr(response, "candidates", None) or []
+            parts = getattr(getattr(candidates[0], "content", None), "parts", None) or []
+            return getattr(parts[0], "text", None) or "" if parts and candidates else ""
+        except (IndexError, AttributeError, TypeError):
+            return ""
 
     def _build_prompt(self, mpn: str, brand: str, description: str) -> str:
         """
