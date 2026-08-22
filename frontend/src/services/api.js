@@ -128,7 +128,7 @@ export const analyzeProduct = async (mpn, brand, description) => {
   if (IS_DEVELOPMENT) {
     console.log('[API DEBUG] Analyze request:', { mpn, brand, descriptionLength: description?.length });
   }
-  return apiClient.post('/analyze', { mpn, brand, description });
+  return apiClient.post('/api/v1/analyze', { mpn, brand, description });
 };
 
 /**
@@ -138,7 +138,7 @@ export const analyzeProduct = async (mpn, brand, description) => {
  * @returns {Promise<Object>} { document_id, chunks_created, status }
  */
 export const uploadDocument = async (formData) => {
-  return apiClient.post('/upload-document', formData, {
+  return apiClient.post('api/v1/upload-document', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
 };
@@ -151,7 +151,7 @@ export const uploadDocument = async (formData) => {
  * @returns {Promise<Object>} { results, total, page, limit }
  */
 export const getHistory = async (page = 1, limit = 10) => {
-  return apiClient.get('/history', { params: { page, limit } });
+  return apiClient.get('api/v1/history', { params: { page, limit } });
 };
 
 /**
@@ -160,7 +160,7 @@ export const getHistory = async (page = 1, limit = 10) => {
  * @returns {Promise<Object>} { status, version, uptime, chromadb, gemini }
  */
 export const getHealth = async () => {
-  return apiClient.get('/health');
+  return apiClient.get('api/v1/health');
 };
 
 /** Run the 200-item ground-truth evaluation. */
@@ -176,7 +176,7 @@ export const process1000Dataset = async () => apiClient.post('/process-1000');
  * @returns {Promise<Blob>} JSON file
  */
 export const downloadJson = async (productId) => {
-  return apiClient.get(`/download-json/${productId}`, {
+  return apiClient.get(`api/v1/download-json/${productId}`, {
     responseType: 'blob',
   });
 };
@@ -188,7 +188,7 @@ export const downloadJson = async (productId) => {
  * @returns {Promise<Blob>} PDF file
  */
 export const downloadPdf = async (productId) => {
-  return apiClient.get(`/download-pdf/${productId}`, {
+  return apiClient.get(`api/v1/download-pdf/${productId}`, {
     responseType: 'blob',
   });
 };
