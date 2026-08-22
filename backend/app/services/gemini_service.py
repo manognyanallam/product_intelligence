@@ -347,10 +347,11 @@ class GeminiService:
             from google import genai
 
             return client.models.generate_content(
-                model=self.model,
+                model='gemini-1.5-flash',
                 contents=prompt,
                 config=genai.types.GenerateContentConfig(
-                    response_mime_type="application/json", temperature=0.4,
+                    response_mime_type="application/json", 
+                    temperature=0.4,
                 ),
             )
 
