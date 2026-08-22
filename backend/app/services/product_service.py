@@ -219,7 +219,7 @@ class ProductService:
 
     @staticmethod
     def _build_enriched_data(request: ProductRequest, ai: Dict[str, Any]) -> EnrichedData:
-        ""Map only values with the expected shape into the response model."""
+        """Map only values with the expected shape into the response model."""
         def text_value(key: str) -> str:
             value = ai.get(key, "")
             return value if isinstance(value, str) else ""
