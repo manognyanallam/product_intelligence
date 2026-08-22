@@ -22,7 +22,7 @@ import logging
 import time
 
 from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware import CORSMiddleware
 from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -71,6 +71,14 @@ def create_app() -> FastAPI:
     app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
     # --- CORS -------------------------------------------------------------
+    raw_origins = settings.cors_origins
+    if isinstance(raw_origins, str):
+        origins_list = [ o.strip() for o in raw_origins.split(",") if o.strip()]
+    elif isinstance(raw_origins, list):
+        origins_list = raw_origins
+    else:
+        origins_list = ["*"]
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,
