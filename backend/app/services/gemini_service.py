@@ -344,11 +344,12 @@ class GeminiService:
         return self._extract_response_text(response)
 
         def _generate_content(self, client, prompt: str):
-            from google.genai import types as genai_types
+            from google import genai
+
             return client.models.generate_content(
                 model=self.model,
                 contents=prompt,
-                config=genai_types.GenerateContentConfig(
+                config=genai.types.GenerateContentConfig(
                     response_mime_type="application/json", temperature=0.4,
                 ),
             )
