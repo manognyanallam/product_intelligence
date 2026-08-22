@@ -31,7 +31,7 @@ class ProductIntelligenceAgent(BaseAgent):
         """Initialize the Product Intelligence Agent."""
         super().__init__(agent_name="Product Intelligence Agent")
         # TODO: Initialize LangChain components
-        #   - ChatGemini (gemini-2.0-flash)
+        #   - ChatGemini (gemini-2.5-flash)
         #   - Prompt templates
         #   - Structured output parser
         #   - RunnableSequence
