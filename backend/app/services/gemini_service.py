@@ -153,7 +153,10 @@ class GeminiService:
     """
 
     def __init__(self, model: Optional[str] = None, api_key: Optional[str] = None) -> None:
-        self.model = model or settings.gemini_model or "gemini-2.5-flash"
+        # Use a generally available Gemini model unless one is explicitly
+        # supplied by the caller. This avoids 404s from stale/preview model
+        # names configured in a deployment environment.
+        self.model = model or "gemini-2.5-flash"
         self.api_key = api_key if api_key is not None else settings.gemini_api_key
         self._client = None
         self._max_attempts = 3
