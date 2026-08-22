@@ -155,7 +155,7 @@ class GeminiService:
     def __init__(self, model: Optional[str] = None, api_key: Optional[str] = None) -> None:
         # Use a broadly available stable model. A stale/preview model name
         # commonly causes Gemini to return HTTP 404 on deployed API keys.
-        self.model = model or "gemini-2.0-flash"
+        self.model = model or "gemini-3.1-flash-lite"
         self.api_key = api_key if api_key is not None else settings.gemini_api_key
         self._client = None
         self._max_attempts = 3
