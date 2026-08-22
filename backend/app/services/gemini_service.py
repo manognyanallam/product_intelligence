@@ -257,20 +257,23 @@ class GeminiService:
         if self._client is not None:
             return self._client
 
+        def _get_client(self):
+            
         try:
-            from google import genai  # Official Google Generative AI SDK.
-        except ImportError as exc:  # pragma: no cover - defensive.
+            # The modern Google GenAI library import
+            from google import genai
+        except ImportError as exc:
             raise GeminiConfigurationError(
-                "The Google Generative AI SDK is not installed. "
-                "Run: pip install google-genai",
+                "The google-genai SDK package is not installed.",
                 detail=str(exc),
             ) from exc
 
         try:
+            # The new SDK creates a single Client object using your exact API key
             self._client = genai.Client(api_key=self.api_key)
-        except Exception as exc:  # pragma: no cover - defensive.
+        except Exception as exc:
             raise GeminiConfigurationError(
-                "Failed to initialize the Gemini client.",
+                "Failed to initialize the modern Gemini client.",
                 detail=str(exc),
             ) from exc
 
