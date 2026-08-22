@@ -332,13 +332,13 @@ class GeminiService:
 
         try:
                 response = self._generate_content(client, prompt)
-            except Exception as exc:
+        except Exception as exc:
                 raise self._normalize_provider_error(exc) from exc
-            finally:
+        finally:
                 elapsed_ms = int((time.perf_counter() - started) * 1000)
                 logger.debug("Gemini call completed in %dms", elapsed_ms)
 
-            return self._extract_response_text(response)
+        return self._extract_response_text(response)
 
         def _generate_content(self, client, prompt: str):
             from google.genai import types as genai_types
