@@ -257,8 +257,8 @@ class GeminiService:
         if self._client is not None:
             return self._client
 
-        def _get_client(self):
-            
+    def _get_client(self):
+
         try:
             # The modern Google GenAI library import
             from google import genai
