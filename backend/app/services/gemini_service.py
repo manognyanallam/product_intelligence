@@ -153,10 +153,9 @@ class GeminiService:
     """
 
     def __init__(self, model: Optional[str] = None, api_key: Optional[str] = None) -> None:
-        # Use a generally available Gemini model unless one is explicitly
-        # supplied by the caller. This avoids 404s from stale/preview model
-        # names configured in a deployment environment.
-        self.model = model or "gemini-2.5-flash"
+        # Use a broadly available stable model. A stale/preview model name
+        # commonly causes Gemini to return HTTP 404 on deployed API keys.
+        self.model = model or "gemini-2.0-flash"
         self.api_key = api_key if api_key is not None else settings.gemini_api_key
         self._client = None
         self._max_attempts = 3
@@ -243,7 +242,9 @@ class GeminiService:
 
         if isinstance(last_error, GeminiInvalidResponseError):
             raise GeminiInvalidResponseError("Gemini returned invalid JSON after retries.", detail="Invalid AI response after bounded retries.") from last_error
-        raise GeminiNetworkError("Gemini API remained unavailable after bounded retries.", detail="Transient failure after bounded retries.") from last_error
+        if last_error is not None:
+            raise last_error
+        raise GeminiNetworkError("Gemini API remained unavailable after bounded retries.", detail="No response was received from Gemini.")
 
     # -- Internal helpers ---------------------------------------------------
 
