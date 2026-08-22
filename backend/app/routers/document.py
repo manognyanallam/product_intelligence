@@ -59,17 +59,33 @@ async def upload_document(
         HTTPException 413: If the file exceeds the maximum upload size.
         HTTPException 429: If the request rate limit is exceeded.
     """
-    # Read file content and validate size.
-    content = await file.read()
-    size_bytes = len(content)
-
-    # Enforce maximum upload size (10MB).
+    # Reject oversized requests before buffering the multipart payload when the
+    # client provided a usable content length.
     max_bytes = settings.max_upload_size_mb * 1024 * 1024
-    if size_bytes > max_bytes:
+    content_length = request.headers.get("content-length")
+    if content_length and content_length.isdigit() and int(content_length) > max_bytes:
         raise HTTPException(
             status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
             detail=f"File too large. Maximum size is {settings.max_upload_size_mb}MB.",
         )
+
+    # Read in bounded chunks so chunked requests cannot exhaust memory.
+    chunks = []
+    size_bytes = 0
+    while True:
+        chunk = await file.read(min(1024 * 1024, max_bytes - size_bytes + 1))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        size_bytes += len(chunk)
+        if size_bytes > max_bytes:
+            raise HTTPException(
+                status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                detail=f"File too large. Maximum size is {settings.max_upload_size_mb}MB.",
+            )
+    content = bytes().join(chunks)
+
+    # An empty file is handled by DocumentService.
 
     try:
         result = await document_service.upload(

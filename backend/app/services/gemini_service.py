@@ -1,4 +1,4 @@
-﻿"""
+"""
 Gemini Service ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Google Generative AI integration for product intelligence.
 
 Responsibilities:
@@ -330,75 +330,55 @@ class GeminiService:
         client = self._get_client()
         started = time.perf_counter()
 
-        try:
-            # Request JSON output directly from the model to maximize the
-            # chance of a parseable response.
-            from google.genai import types as genai_types
+            try:
+                response = self._generate_content(client, prompt)
+            except Exception as exc:
+                raise self._normalize_provider_error(exc) from exc
+            finally:
+                elapsed_ms = int((time.perf_counter() - started) * 1000)
+                logger.debug("Gemini call completed in %dms", elapsed_ms)
 
-            response = client.models.generate_content(
+            return self._extract_response_text(response)
+
+        def _generate_content(self, client, prompt: str):
+            from google.genai import types as genai_types
+            return client.models.generate_content(
                 model=self.model,
                 contents=prompt,
                 config=genai_types.GenerateContentConfig(
-                    response_mime_type="application/json",
-                    temperature=0.4,
+                    response_mime_type="application/json", temperature=0.4,
                 ),
             )
-        except Exception as exc:
-            # Normalize SDK errors into our typed error hierarchy.
-            status = getattr(exc, "code", None)
-            status = getattr(exc, "status_code", None) or status
-            if isinstance(status, int) and status == 429:
-                raise GeminiRateLimitError(
-                    "Gemini API rate limit exceeded. Please try again later.",
-                    detail=str(exc),
-                ) from exc
 
+        @staticmethod
+        def _normalize_provider_error(exc: Exception) -> GeminiServiceError:
+            status = getattr(exc, "status_code", None) or getattr(exc, "code", None)
             message = str(exc).lower()
-            if "api key" in message or "apikey" in message or "permission" in message:
-                raise GeminiConfigurationError(
-                    "Invalid or unauthorized Gemini API key.",
-                    detail=str(exc),
-                ) from exc
-            if "429" in message or "quota" in message or "resource exhausted" in message:
-                raise GeminiRateLimitError(
-                    "Gemini API rate limit exceeded. Please try again later.",
-                    detail=str(exc),
-                ) from exc
-            if isinstance(status, int) and status in (401, 403):
-                raise GeminiConfigurationError(
-                    "Invalid or unauthorized Gemini API key.",
-                    detail=str(exc),
-                ) from exc
-            # Preserve the provider status so callers can distinguish a
-            # temporary Gemini outage from a local connection failure.
+            if status == 429 or "429" in message or "quota" in message or "resource exhausted" in message:
+                return GeminiRateLimitError("Gemini API rate limit exceeded. Please try again later.", detail=str(exc))
+            if status in (401, 403) or "api key" in message or "apikey" in message or "permission" in message:
+                return GeminiConfigurationError("Invalid or unauthorized Gemini API key.", detail=str(exc))
             if isinstance(status, int) and status in (500, 502, 503, 504):
                 error = GeminiNetworkError("Gemini API is temporarily unavailable. Please retry shortly.", detail="Transient provider failure.")
                 error.status_code = status
-                raise error from exc
+                return error
             if isinstance(status, int) and 400 <= status < 500:
                 error = GeminiRequestError("Gemini rejected the request.", detail="Non-transient provider request error.")
                 error.status_code = status
-                raise error from exc
-            # Network / transient failures (connection errors, timeouts).
-            raise GeminiNetworkError("Failed to reach the Gemini API.", detail="Transient network failure.") from exc
-        finally:
-            elapsed_ms = int((time.perf_counter() - started) * 1000)
-            logger.debug("Gemini call completed in %dms", elapsed_ms)
+                return error
+            return GeminiNetworkError("Failed to reach the Gemini API.", detail="Transient network failure.")
 
-        text = getattr(response, "text", None)
-        if not text:
-            # Some responses expose parts/candidates ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â extract defensively.
+        @staticmethod
+        def _extract_response_text(response) -> str:
+            text = getattr(response, "text", None)
+            if text:
+                return text
             try:
                 candidates = getattr(response, "candidates", None) or []
-                if candidates:
-                    content = getattr(candidates[0], "content", None)
-                    parts = getattr(content, "parts", None) or []
-                    if parts:
-                        text = getattr(parts[0], "text", None) or None
-            except Exception:  # pragma: no cover - defensive.
-                text = None
-
-        return text or ""
+                parts = getattr(getattr(candidates[0], "content", None), "parts", None) or []
+                return getattr(parts[0], "text", None) or "" if parts and candidates else ""
+            except (IndexError, AttributeError, TypeError):
+                return ""
 
     def _build_prompt(self, mpn: str, brand: str, description: str) -> str:
         """

@@ -20,8 +20,13 @@ const getApiBaseUrl = () => {
   // An explicit API URL is authoritative, including for LAN deployments.
   // Set REACT_APP_API_URL to the backend's reachable LAN address, e.g.
   // http://192.168.1.11:8000/api/v1
-  if (process.env.REACT_APP_API_URL) {
-    return process.env.REACT_APP_API_URL.replace(/\/$/, '');
+  const configuredApiUrl = process.env.REACT_APP_API_URL;
+  const isProduction = process.env.NODE_ENV === 'production';
+  const pointsToLocalhost = configuredApiUrl && /localhost|127\.0\.0\.1/.test(configuredApiUrl);
+
+  // Do not ship a development localhost URL in a production bundle.
+  if (configuredApiUrl && !(isProduction && pointsToLocalhost)) {
+    return configuredApiUrl.replace(/\/$/, '');
   }
 
   if (isLocalFrontend) {
@@ -29,14 +34,17 @@ const getApiBaseUrl = () => {
   }
 
   if (hostname) {
-    return `http://${hostname}:8000/api/v1`;
+    // Production frontend deployments use the deployed Render backend rather
+    // than attempting to reach port 8000 on the frontend host.
+    return 'https://product-intelligence-zpj7.onrender.com/api/v1';
   }
 
   return 'http://localhost:8000/api/v1';
 };
 
 const API_BASE_URL = getApiBaseUrl();
-console.log('[API DEBUG] Base URL:', API_BASE_URL);
+const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+if (IS_DEVELOPMENT) console.log('[API DEBUG] Base URL:', API_BASE_URL);
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -49,11 +57,9 @@ const apiClient = axios.create({
 // Request interceptor — log request details
 apiClient.interceptors.request.use(
   (config) => {
-    const fullUrl = `${config.baseURL || ''}${config.url || ''}`;
-    console.log('[API DEBUG] Request URL:', fullUrl);
-    console.log('[API DEBUG] Request Method:', config.method?.toUpperCase());
-    if (config.data) {
-      console.log('[API DEBUG] Request Data:', config.data);
+    if (IS_DEVELOPMENT) {
+      const fullUrl = `${config.baseURL || ''}${config.url || ''}`;
+      console.log('[API DEBUG] Request:', config.method?.toUpperCase(), fullUrl);
     }
     return config;
   },
@@ -63,7 +69,9 @@ apiClient.interceptors.request.use(
 // Response interceptor — handle errors and distinguish exact error types
 apiClient.interceptors.response.use(
   (response) => {
-    console.log('[API DEBUG] Response:', response.status, response.config?.url, response.data);
+    if (IS_DEVELOPMENT) {
+      console.log('[API DEBUG] Response:', response.status, response.config?.url);
+    }
     return response.data;
   },
   (error) => {
@@ -117,9 +125,9 @@ apiClient.interceptors.response.use(
  * @returns {Promise<Object>} ProductIntelligenceResponse
  */
 export const analyzeProduct = async (mpn, brand, description) => {
-  console.log('[API DEBUG] Base URL:', API_BASE_URL);
-  console.log('[API DEBUG] Analyze URL:', `${API_BASE_URL}/analyze`);
-  console.log('[API DEBUG] Payload:', { mpn, brand, description });
+  if (IS_DEVELOPMENT) {
+    console.log('[API DEBUG] Analyze request:', { mpn, brand, descriptionLength: description?.length });
+  }
   return apiClient.post('/analyze', { mpn, brand, description });
 };
 
