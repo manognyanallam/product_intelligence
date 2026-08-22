@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     backend_host: str = "0.0.0.0"
     backend_port: int = 8000
     backend_cors_origins: str = "http://localhost:3000,http://localhost:3001,http://localhost:3002,http://127.0.0.1:3000,http://127.0.0.1:3001,http://127.0.0.1:3002,http://192.168.1.11:3000,http://192.168.1.11:3001,https://product-intel.vercel.app,https://product-intelligence-zpj7.onrender.com,https://product-intelligence-1-psrv.onrender.com"
+
     log_level: str = "INFO"
 
     # Upload limits
