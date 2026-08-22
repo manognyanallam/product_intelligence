@@ -153,7 +153,7 @@ class GeminiService:
     """
 
     def __init__(self, model: Optional[str] = None, api_key: Optional[str] = None) -> None:
-        self.model = model or settings.gemini_model or "gemini-2.0-flash"
+        self.model = model or settings.gemini_model or "gemini-1.5-flash"
         self.api_key = api_key if api_key is not None else settings.gemini_api_key
         self._client = None
         self._max_attempts = 3
