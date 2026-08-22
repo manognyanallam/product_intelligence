@@ -164,10 +164,10 @@ export const getHealth = async () => {
 };
 
 /** Run the 200-item ground-truth evaluation. */
-export const evaluateDataset = async () => apiClient.post('/evaluate');
+export const evaluateDataset = async () => apiClient.post('api/v1/evaluate');
 
 /** Process the 1000-item scale dataset after evaluation. */
-export const process1000Dataset = async () => apiClient.post('/process-1000');
+export const process1000Dataset = async () => apiClient.post('api/v1/process-1000');
 
 /**
  * Download analysis as JSON.
